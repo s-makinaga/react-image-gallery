@@ -87,7 +87,8 @@ export default class ImageGallery extends React.Component {
     stopPropagation: PropTypes.bool,
     additionalClass: PropTypes.string,
     useTranslate3D: PropTypes.bool,
-    isRTL: PropTypes.bool
+    isRTL: PropTypes.bool,
+    imgStyle: PropTypes.object
   };
 
   static defaultProps = {
@@ -106,6 +107,7 @@ export default class ImageGallery extends React.Component {
     disableSwipe: false,
     useTranslate3D: true,
     isRTL: false,
+    imgStyle: {},
     useBrowserFullscreen: true,
     preventDefaultTouchmoveEvent: false,
     flickThreshold: 0.4,
@@ -906,12 +908,14 @@ export default class ImageGallery extends React.Component {
               <img
                 alt={item.originalAlt}
                 src={item.original}
+                style={this.props.imgStyle}
               />
             </picture>
           :
             <img
               src={item.original}
               alt={item.originalAlt}
+              style={this.props.imgStyle}
               srcSet={item.srcSet}
               sizes={item.sizes}
               title={item.originalTitle}
